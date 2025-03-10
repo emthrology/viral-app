@@ -70,6 +70,12 @@ const menuItem = ref([
     url: '/notice',
   },
   {
+    title: '고객센터',
+    iconUrl: '/images/menu/service-center.svg',
+    iconActiveUrl: '/images/menu/service-atv.svg',
+    url: '/service',
+  },
+  {
     title: '사용 가이드',
     iconUrl: '/images/menu/guide-icon.svg',
     iconActiveUrl: '/images/menu/guide-icon-atv.svg',
