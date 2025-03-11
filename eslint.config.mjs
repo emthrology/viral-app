@@ -7,6 +7,11 @@ export default withNuxt(
     files: ['**/*.ts', '**/*.js', '**/*.vue'],
     rules: {
       // 'no-console': 'off', // allow console.log in TypeScript files
+      "vue/multi-word-component-names": 0,
+      "vue/first-attribute-linebreak": ["error", {
+        "singleline": "ignore",
+        "multiline": "below"
+      }],
       'vue/no-multiple-template-root': 'off',
       'vue/component-name-in-template-casing': [
         'error',
