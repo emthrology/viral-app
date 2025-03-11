@@ -6,12 +6,17 @@
           <div class="offcanvas-body">
             <nav id="nav">
               <ul class="gnb">
-                <li v-for="(item, index) in menuItem" :key="index" class="gnb-item">
+                <li
+                  v-for="(item, index) in menuItem"
+                  :key="index"
+                  class="gnb-item"
+                >
                   <template v-if="item.url == props.currentMenuUrl">
                     <LinkButton :url="item.url" classes="focusGnb">
                       <span class="gnb-txt-cont">
                         <div class="gnb-txt gnb-focus-txt">
-                          <img :src="item.iconActiveUrl" alt="템플릿" /> {{ item.title }}
+                          <img :src="item.iconActiveUrl" alt="템플릿" />
+                          {{ item.title }}
                         </div>
                       </span>
                     </LinkButton>
@@ -19,7 +24,8 @@
                   <template v-else>
                     <LinkButton :url="item.url" classes="">
                       <span class="gnb-txt">
-                        <img :src="item.iconUrl" alt="템플릿" /> {{ item.title }}
+                        <img :src="item.iconUrl" alt="템플릿" />
+                        {{ item.title }}
                       </span>
                     </LinkButton>
                   </template>
@@ -39,9 +45,9 @@ import LinkButton from './common/LinkButton.vue';
 const props = defineProps({
   currentMenuUrl: {
     type: String,
-    default: '/'
-  }
-})
+    default: '/',
+  },
+});
 
 //TODO active, inactive svg 요청하기
 const menuItem = ref([
@@ -72,7 +78,7 @@ const menuItem = ref([
   {
     title: '고객센터',
     iconUrl: '/images/menu/service-center.svg',
-    iconActiveUrl: '/images/menu/service-atv.svg',
+    iconActiveUrl: '/images/menu/service-center-atv.svg',
     url: '/service',
   },
   {
@@ -81,12 +87,13 @@ const menuItem = ref([
     iconActiveUrl: '/images/menu/guide-icon-atv.svg',
     url: '/guide',
   },
-])
+]);
 </script>
 
 <style lang="css" scoped>
 .menu-area {
   transform: translateX(0%);
+  display: block !important;
 }
 
 .offcanvas-wrap {

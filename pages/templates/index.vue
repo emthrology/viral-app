@@ -4,90 +4,93 @@
       <Sidebar v-if="menuStore.leftMenuToggle" current-menu-url="/templates" />
       <section class="content-area">
         <article class="content-wrap">
-          <div class="content-inner">
-            <h3 class="content-title">
-              비디오 템플릿 <span>나만의 스타일대로 템플릿을 꾸며보세요! 설정한 템플릿은 숏폼에 반영됩니다.</span>
-            </h3>
-            <div class="content-item template-item">
-              <div class="recent-wrap template-wrap">
-                <div class="title">
-                  최근 사용한 템플릿<span class="date-view">25. 03. 04</span>
-                </div>
-                <div class="tamplate-box">
-                  <div class="tamplate-edit">
-                    <div class="templaete-inner">
-                      <div class="templaete-img">
-                        <img src="/images/template/recent-img.png" alt="최근 사용한 템플릿" />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="bottom-item">
-                    <div class="template-title">Dance battle</div>
-                    <button class="deletBtn">
-                      <img src="/images/template/delet-btn.svg" alt="휴지통 아이콘" />
-                    </button>
-                  </div>
-                </div>
-              </div>
+          <div class="alert">
+            비디오 템플릿은 최대 3개까지 생성이 가능합니다.
+          </div>
 
+          <article class="content-inner video-inner">
+            <h3 class="content-title m-top50">
+              비디오 템플릿 스타일
+              <span class="title-descript"
+                >나만의 스타일대로 템플릿을 꾸며보세요! 설정한 템플릿은 숏폼에
+                반영됩니다.</span
+              >
+            </h3>
+
+            <div class="content-item template-item">
+              <!-- 최근 사용한 템플릿 -->
+              <RecentTemplateCard
+                :is-recent="true"
+                classes="recent-wrap template-wrap"
+                title="최근 사용한 템플릿"
+                date="25.03.04"
+                @on-delete="openDeleteModal"
+              />
               <!-- 지난 템플릿 -->
-              <!-- TODO 지난 템플릿은 반복문처리 -->
               <div class="past-wrap template-wrap">
                 <div class="past-container">
                   <div class="title">지난 템플릿</div>
                   <!-- 지난 템플릿1 -->
-                  <div class="past-item tamplate-box">
-                    <span class="date-view">25. 03. 04</span>
-                    <a href="#" class="tamplate-edit">
-                      <div class="templaete-inner">
-                        <div class="templaete-img">
-                          <img src="/images/template/past-img1.png" alt="지난 템플릿1" />
-                        </div>
-                      </div>
-                    </a>
-                    <div class="bottom-item">
-                      <div class="template-title">Dance battle</div>
-                      <button class="deletBtn">
-                        <img src="/images/template/delet-btn.svg" alt="휴지통 아이콘" />
-                      </button>
-                    </div>
-                  </div>
+                  <PastTemplateCard
+                    classes="past-item template-box"
+                    date="25.03.04"
+                    template-image="/images/template/past-img1.png"
+                    @on-delete="openDeleteModal"
+                  />
                   <!-- 지난 템플릿2 -->
-                  <div class="past-item tamplate-box">
-                    <span class="date-view">25. 03. 04</span>
-                    <a href="#" class="tamplate-edit">
-                      <div class="templaete-inner">
-                        <div class="templaete-img">
-                          <img src="/images/template/past-img2.png" alt="지난 템플릿2" />
-                        </div>
-                      </div>
-                    </a>
-                    <div class="bottom-item">
-                      <div class="template-title">Dance battle</div>
-                      <button class="deletBtn">
-                        <img src="/images/template/delet-btn.svg" alt="휴지통 아이콘" />
-                      </button>
-                    </div>
-                  </div>
+                  <PastTemplateCard
+                    classes="past-item template-box"
+                    date="25.03.04"
+                    template-image="/images/template/past-img2.png"
+                    @on-delete="openDeleteModal"
+                  />
                 </div>
               </div>
             </div>
-          </div>
+          </article>
           <div class="templateBtn-wrap">
-            <button type="button" class="templaeteBtn">템플릿 추가하기</button>
+            <button
+              type="button"
+              class="templaeteBtn"
+              onclick="location.href='video-making.html'"
+            >
+              템플릿 추가하기
+            </button>
           </div>
         </article>
       </section>
     </div>
+    <Confirm
+      v-if="toggleModal"
+      title="선택하신 템플릿을 정말로 삭제하시겠습니까?"
+      yea="예"
+      nay="아니오"
+      @click-yea="deleteTemplate('param \'id\' is supposed to be here')"
+      @click-nay="closeDeleteModal"
+    />
   </div>
 </template>
 
 <script setup>
+import RecentTemplateCard from '~/components/templates/RecentTemplateCard.vue';
+import PastTemplateCard from '~/components/templates/PastTemplateCard.vue';
+// import Button from '~/components/common/Button.vue';
+import Confirm from '~/components/common/Confirm.vue';
 import Sidebar from '~/components/Sidebar.vue';
-import { useUserStore, useMenuStore } from '@/stores'
+import { useMenuStore } from '@/stores';
 // const userStore = useUserStore();
 const menuStore = useMenuStore();
-
+const toggleModal = ref(false);
+const openDeleteModal = () => {
+  toggleModal.value = true;
+};
+const closeDeleteModal = () => {
+  toggleModal.value = false;
+};
+// TODO delete template throuth api
+const deleteTemplate = id => {
+  console.log(`delete temlate ${id}`);
+};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="css" scoped></style>

@@ -7,9 +7,13 @@
             <ul class="info info01">
               <li>(주)바이럴</li>
               <li>대표 : 가나다</li>
-              <li class="info-mg">주소 : 서울특별시 서울구 서울로 123 가나다라타워 3층 바이럴</li>
+              <li class="info-mg">
+                주소 : 서울특별시 서울구 서울로 123 가나다라타워 3층 바이럴
+              </li>
               <li>사업자등록번호 : 000 - 00 - 00000</li>
-              <li class="info-mg">통신판매업 신고번호 : 제 0000 - 서울서울 - 0000호</li>
+              <li class="info-mg">
+                통신판매업 신고번호 : 제 0000 - 서울서울 - 0000호
+              </li>
               <li>
                 abcdefg@gmail.com
                 <span>010-0101-0101</span>
@@ -54,7 +58,8 @@
                 <a href="#">고객센터</a>
               </li>
             </ul>
-          </ul><!-- //partner-site -->
+          </ul>
+          <!-- //partner-site -->
         </div>
       </div>
 
@@ -73,20 +78,17 @@
               <div id="privacy-btn" class="link">
                 <a href="#">개인정보처리방침</a>
               </div>
-            </div><!-- //support-links -->
+            </div>
+            <!-- //support-links -->
           </div>
-          <div class="copyright">
-            ©Viral 2025 All rights reserved.
-          </div>
+          <div class="copyright">©Viral 2025 All rights reserved.</div>
         </div>
-      </div><!-- //footer-info01 -->
+      </div>
+      <!-- //footer-info01 -->
     </div>
-
   </div>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style lang="scss" scoped></style>

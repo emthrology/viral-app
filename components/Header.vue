@@ -3,14 +3,23 @@
     <div class="inner">
       <div class="content">
         <div class="left-content">
-          <button v-if="userStore.isAuthenticated" type="button" class="offcanvas-open" @click="toggleLeftMenu">
+          <button
+            v-if="userStore.isAuthenticated"
+            type="button"
+            class="offcanvas-open"
+            @click="toggleLeftMenu"
+          >
             <span />
             <span />
             <span />
           </button>
           <h1 class="logo">
             <LinkButton classes="logo-img" url="/main">
-              <img class="logo-img" src="/images/offcanvas-logo.svg" alt="viral-main-logo" />
+              <img
+                class="logo-img"
+                src="/images/offcanvas-logo.svg"
+                alt="viral-main-logo"
+              />
             </LinkButton>
           </h1>
           <span class="beta-badge">Beta</span>
@@ -19,12 +28,12 @@
         <!-- 로그인 전 보여짐 -->
         <ul v-if="!userStore.isAuthenticated" class="right-content">
           <li>
-            <LinkButton classes="loginBtn" url="/login">
+            <LinkButton classes="loginBtn" url="/auth/login">
               로그인
             </LinkButton>
           </li>
           <li>
-            <LinkButton classes="signupBtn" url="/register">
+            <LinkButton classes="signupBtn" url="/auth/register">
               회원가입
             </LinkButton>
           </li>
@@ -33,7 +42,8 @@
         <ul v-else class="right-content log-after">
           <li>
             <LinkButton classes="guideBtn after-item" url="/guide">
-              <img src="/images/menu/guide-icon-atv.svg" alt="사용가이드 아이콘" /> 사용 가이드
+              <img src="/images/hd-guide.svg" alt="사용가이드 아이콘" />
+              사용 가이드
             </LinkButton>
           </li>
           <li>
@@ -67,17 +77,17 @@
 </template>
 
 <script setup>
-import LinkButton from './common/LinkButton.vue'
-import { useUserStore, useMenuStore } from '@/stores'
+import LinkButton from './common/LinkButton.vue';
+import { useUserStore, useMenuStore } from '@/stores';
 const userStore = useUserStore();
 const menuStore = useMenuStore();
 
 const toggleRightSubMenu = () => {
   menuStore.toggleRightMenu();
-}
+};
 const toggleLeftMenu = () => {
   menuStore.toggleLeftMenu();
-}
+};
 </script>
 
 <style lang="scss" scoped></style>
