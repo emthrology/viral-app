@@ -27,9 +27,5 @@ export const useUserStore = defineStore('user', {
       this.token = '';
     },
   },
-  // persist: {
-  //   key: 'user',
-  //   storage: localStorage, // localStorage에 저장 (sessionStorage도 가능)
-  //   paths: ['isAuthenticated', 'userInfo', 'token'], // 저장할 state 선택
-  // },
+  persist: true,
 });
