@@ -65,6 +65,7 @@ const formData = reactive({
   gender: '',
 });
 const setPhase = data => {
+  //vue2 의 object 새로고침과 완전 반대방식
   for (const key in data.data) {
     formData[key] = data.data[key];
   }

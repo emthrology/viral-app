@@ -14,11 +14,7 @@
       </div>
       <div class="btn_wrap">
         <div class="btn-container">
-          <button
-            type="button"
-            class="homeBtn"
-            onclick="location.href='home-after.html'"
-          >
+          <button type="button" class="homeBtn" @click="router.pusn('/main')">
             홈으로
           </button>
         </div>
@@ -26,7 +22,7 @@
           <button
             type="button"
             class="finishBtn"
-            onclick="location.href='login.html'"
+            @click="router.push('/auth/login')"
           >
             로그인
           </button>
@@ -36,6 +32,8 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const router = useRouter();
+</script>
 
 <style lang="scss" scoped></style>
