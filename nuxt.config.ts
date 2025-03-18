@@ -69,7 +69,7 @@ export default defineNuxtConfig({
   css: ['@/assets/css/main.css'],
   // TODO 아래 지우고, middleware/auth.ts 설정한 후 root 페이지 vue (pages/index.vue)에 middleware 이용한 리다이렉트 처리 (로그인했으면 '/main', 로그인안했으면 '/login' 또는 '/welcome')
   routeRules: {
-    '/': { redirect: '/auth/login' },
+    '/': { redirect: '/main' },
   },
   compatibilityDate: '2024-11-01',
 });
