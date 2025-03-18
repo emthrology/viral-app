@@ -44,6 +44,11 @@
 </template>
 
 <script setup>
+definePageMeta({
+  title: 'Viral',
+  description: '영상 생성',
+  middleware: ['sanctum:auth'],
+});
 const menuStore = useMenuStore();
 const { query } = useRoute();
 const router = useRouter();

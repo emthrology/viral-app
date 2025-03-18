@@ -17,6 +17,11 @@ import PhaseHp from '~/components/auth/register/PhaseHp.vue';
 import PhaseAgree from '~/components/auth/register/PhaseAgree.vue';
 import PhaseForm from '~/components/auth/register/PhaseForm.vue';
 import PhaseComplete from '~/components/auth/register/PhaseComplete.vue';
+definePageMeta({
+  title: 'Viral',
+  description: '회원가입',
+  middleware: ['sanctum:guest'],
+});
 const phaseContainer = ref([
   {
     phase: '1',

@@ -62,6 +62,11 @@
 <script setup>
 import FindComponent from '~/components/auth/FindComponent.vue';
 import CertButton from '~/components/common/CertButton.vue';
+definePageMeta({
+  title: 'Viral',
+  description: 'id 찾기',
+  middleware: ['sanctum:guest'],
+});
 const router = useRouter();
 const userId = ref('000100');
 const phone = ref('');

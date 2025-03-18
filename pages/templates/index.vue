@@ -78,6 +78,11 @@ import PastTemplateCard from '~/components/templates/PastTemplateCard.vue';
 import Confirm from '~/components/common/Confirm.vue';
 import Sidebar from '~/components/Sidebar.vue';
 import { useMenuStore } from '@/stores';
+definePageMeta({
+  title: 'Viral',
+  description: '탬플릿',
+  middleware: ['sanctum:auth'],
+});
 // const userStore = useUserStore();
 const menuStore = useMenuStore();
 const toggleModal = ref(false);

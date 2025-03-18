@@ -154,6 +154,11 @@
 </template>
 
 <script setup>
+definePageMeta({
+  title: 'Viral',
+  description: '내 프로젝트',
+  middleware: ['sanctum:auth'],
+});
 const router = useRouter();
 const menuStore = useMenuStore();
 const projectStore = useProjectStore();

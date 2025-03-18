@@ -85,7 +85,11 @@
 <script setup>
 import FindComponent from '~/components/auth/FindComponent.vue';
 import CertButton from '~/components/common/CertButton.vue';
-import Button from '~/components/common/Button.vue';
+definePageMeta({
+  title: 'Viral',
+  description: '비밀번호 찾기',
+  middleware: ['sanctum:guest'],
+});
 const id = ref('');
 const phone = ref('');
 const code = ref('');

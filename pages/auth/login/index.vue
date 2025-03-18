@@ -65,6 +65,11 @@
 import LinkButton from '~/components/common/LinkButton.vue';
 import Button from '@/components/common/Button.vue';
 import { useUserStore } from '@/stores';
+definePageMeta({
+  title: 'Viral',
+  description: '로그인',
+  middleware: ['sanctum:guest'],
+});
 const { login, user } = useSanctumAuth();
 
 const loginId = ref('');

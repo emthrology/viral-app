@@ -374,7 +374,7 @@ import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
 // const userStore = useUserStore();
 await preloadComponents('DotLottieVue');
 definePageMeta({
-  title: '메인',
+  title: 'Viral',
   description: '메인 페이지',
   middleware: ['sanctum:guest'],
 });
