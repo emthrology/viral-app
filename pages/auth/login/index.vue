@@ -6,16 +6,21 @@
         <div class="input_wrap">
           <div class="input_container">
             <label for="id" class="input_title">
-              <input id="id" type="text" placeholder="아이디" />
+              <input
+                id="id"
+                v-model="loginId"
+                type="text"
+                placeholder="아이디"
+              />
             </label>
           </div>
           <div class="input_container m-top20">
             <label for="password" class="password_container">
               <input
                 id="password"
+                v-model="password"
                 type="password"
                 placeholder="비밀번호"
-                oninput="updatePassword()"
               />
               <span class="eyeBtn">
                 <svg
@@ -38,7 +43,7 @@
         </div>
         <div class="btn_wrap">
           <!-- <button type="button" class="finishBtn" onclick="location.href='home-after.html'">로그인</button> -->
-          <Button classes="finishBtn" @click="testLogin"> 로그인 </Button>
+          <Button classes="finishBtn" @click="handleLogin"> 로그인 </Button>
         </div>
         <ul class="user_account">
           <li>
@@ -60,12 +65,24 @@
 import LinkButton from '~/components/common/LinkButton.vue';
 import Button from '@/components/common/Button.vue';
 import { useUserStore } from '@/stores';
+const { login, user } = useSanctumAuth();
+
+const loginId = ref('');
+const password = ref('');
 const store = useUserStore();
-const router = useRouter();
-const testLogin = () => {
-  //TODO 스토어 상태값 변경은 fetch로 로그인 성공시에 하기
-  store.test_login();
-  router.push('/main');
+const handleLogin = async () => {
+  try {
+    await login({
+      email: loginId.value,
+      password: password.value,
+      // remember: true,
+    });
+
+    const userInfo = user.value.data;
+    store.setUserInfo(userInfo);
+  } catch (e) {
+    console.log(e);
+  }
 };
 </script>
 

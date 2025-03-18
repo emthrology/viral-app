@@ -65,8 +65,8 @@
               <div class="item">
                 <a href="info.html">내 정보</a>
               </div>
-              <div class="item">
-                <a href="index.html">로그아웃</a>
+              <div class="item" @click="handleLogout">
+                <a>로그아웃</a>
               </div>
             </div>
           </li>
@@ -79,6 +79,7 @@
 <script setup>
 import LinkButton from './common/LinkButton.vue';
 import { useUserStore, useMenuStore } from '@/stores';
+const { logout } = useSanctumAuth();
 const userStore = useUserStore();
 const menuStore = useMenuStore();
 
@@ -88,6 +89,15 @@ const toggleRightSubMenu = () => {
 const toggleLeftMenu = () => {
   menuStore.toggleLeftMenu();
 };
+
+const handleLogout = async () => {
+  await logout();
+  userStore.clearUserInfo();
+};
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="css" scoped>
+.add-item {
+  display: block !important;
+}
+</style>

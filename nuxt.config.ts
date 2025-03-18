@@ -1,16 +1,37 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      apiBase:
+        process.env.NODE_ENV === 'development'
+          ? process.env.NUXT_DEV_BASE
+          : process.env.NUXT_API_BASE,
+      youtubeApiKey: process.env.NUXT_YOUTUBE_API_KEY,
+    },
+  },
   modules: [
     '@nuxt/eslint',
     '@pinia/nuxt',
     'pinia-plugin-persistedstate/nuxt',
-    // [
-
-    //   {
-    //     autoImports: ['defineStore', 'acceptHMRUpdate'], // Pinia 관련 헬퍼 자동 임포트
-    //   },
-    // ],
+    'nuxt-auth-sanctum',
   ],
+  sanctum: {
+    baseUrl: 'http://localhost:8000/api', // Laravel API URL
+    endpoints: {
+      csrf: '/sanctum/csrf-cookie', // CSRF cookie 엔드포인트
+      login: '/login', // 로그인 엔드포인트
+      logout: '/logout', // 로그아웃 엔드포인트
+      user: '/me', // 사용자 정보 엔드포인트
+    },
+    csrf: {
+      cookie: 'XSRF-TOKEN', // CSRF 쿠키 이름
+      header: 'X-XSRF-TOKEN', // CSRF 헤더 이름
+    },
+    redirect: {
+      onLogin: '/myproject', // 로그인 후 리다이렉트할 URL
+      onGuestOnly: '/myproject', // 인증이 필요하지 않은 페이지에 접근할 때 리다이렉트할 URL
+      onAuthOnly: '/auth/login', // 인증이 필요한 페이지에 접근할 때 리다이렉트할 URL
+    },
+  },
   imports: {
     dirs: ['stores'],
   },

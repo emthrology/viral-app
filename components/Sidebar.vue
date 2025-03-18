@@ -55,7 +55,7 @@ const menuItem = ref([
     title: '내 프로젝트',
     iconUrl: '/images/menu/my-project.svg',
     iconActiveUrl: '/images/menu/my-project-atv.svg',
-    url: '/main',
+    url: '/myproject',
   },
   {
     title: '탬플릿',
